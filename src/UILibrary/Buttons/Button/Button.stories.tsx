@@ -5,7 +5,7 @@ import Button from './Button';
 import { ButtonVariant } from './Button.Enum';
 
 export default {
-  title: 'Button',
+  title: 'Components/Button',
   component: Button,
   argTypes: {
     variant: {
@@ -35,13 +35,6 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   variant: ButtonVariant.PRIMARY,
-  isLoading: false,
-  children: 'Label',
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  variant: ButtonVariant.SECONDARY,
   isLoading: false,
   children: 'Label',
 };

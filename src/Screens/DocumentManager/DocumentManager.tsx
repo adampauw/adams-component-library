@@ -1,28 +1,27 @@
-import { useState } from 'react';
+import { makeStyles } from '@material-ui/styles';
+import { Collapse } from '@mui/material';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-interface SideBarProps {
+import { DataType, Document, DocumentCard, DocumentEditor, DOCUMENTS } from '../../__stdlib';
+
+interface DocumentManagerProps {
   isOpen: boolean;
 }
 
 const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 32px;
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  background-color: #bfabf0;
 `;
 
 const Item = styled.div`
   width: calc(25% - 16px);
   height: 100px;
   margin-bottom: 16px;
-  background-color: lightgray;
-  cursor: pointer;
 `;
 
-const SideBar = styled.div<SideBarProps>`
+const SideBar = styled.div<DocumentManagerProps>`
   position: fixed;
   top: 0;
   right: ${({ isOpen }) => (isOpen ? '0' : '-300px')};
@@ -34,18 +33,33 @@ const SideBar = styled.div<SideBarProps>`
   z-index: 1;
 `;
 
-const SideBarItem = styled.div`
-  width: 100%;
-  height: 100px;
-  margin-bottom: 16px;
-  background-color: lightgray;
-`;
+const useStyles = makeStyles({
+  collapseList: {
+    minWidth: 'unset!important',
+  },
+});
 
 function DocumentManager() {
+  const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDocument, setActiveDocument] = useState<Document<DataType>>();
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
-  const handleItemClick = () => {
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mouseup', handleClickOutside);
+    return () => {
+      document.removeEventListener('mouseup', handleClickOutside);
+    };
+  }, [sidebarRef]);
+
+  const handleItemClick = (document: Document<DataType>) => {
     setIsOpen(true);
+    setActiveDocument(document);
   };
 
   const handleCloseClick = () => {
@@ -54,15 +68,16 @@ function DocumentManager() {
 
   return (
     <Container>
-      {[...Array(12)].map((_, index) => (
-        <Item key={index} onClick={handleItemClick} />
+      <Collapse in={isOpen} orientation="horizontal" collapsedSize={0} className={classes.collapseList}>
+        <SideBar isOpen={isOpen} ref={sidebarRef}>
+          {activeDocument ? <DocumentEditor doc={activeDocument} onChange={handleCloseClick} setActiveDocument={handleCloseClick} /> : null}
+        </SideBar>
+      </Collapse>
+      {DOCUMENTS.map((document) => (
+        <Item key={document.id}>
+          <DocumentCard doc={document} onClick={() => handleItemClick(document)} />
+        </Item>
       ))}
-      <SideBar isOpen={isOpen}>
-        {[...Array(9)].map((_, index) => (
-          <SideBarItem key={index} />
-        ))}
-        <button onClick={handleCloseClick}>Close</button>
-      </SideBar>
     </Container>
   );
 }
