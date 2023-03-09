@@ -5,6 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.0.28",
+    "@types/styled-components": "^5.1.26",
     "@voiceflow/eslint-config": "^7.0.0",
     "@voiceflow/prettier-config": "^1.2.1",
     "eslint": "^8.35.0",
@@ -16,11 +17,18 @@
   },
   "scripts": {
     "build": "rimraf build && tsc -p tsconfig.json",
-    "dev": "ladle serve"
+    "storybook": "start-storybook -p 6006 -s public"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "prettier": "@voiceflow/prettier-config"
+  "prettier": "@voiceflow/prettier-config",
+  "dependencies": {
+    "@material-ui/styles": "^4.11.5",
+    "@storybook/addons": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/react-webpack5": "^7.0.0-alpha.0",
+    "styled-components": "^5.3.8"
+  }
 }

@@ -1,0 +1,2 @@
+export const BOX_SHADOW =
+  '0px 6px 16px -8px rgba(15, 30, 97, 0.08), 0px 4px 12px -6px rgba(15, 30, 97, 0.06), 0px 3px 8px -4px rgba(15, 30, 97, 0.06), 0px 2px 6px -3px rgba(15, 30, 97, 0.04), 0px 1px 4px -2px rgba(15, 30, 97, 0.04), 0px 1px 3px -1px rgba(15, 30, 97, 0.02), 0px 1px 2px rgba(15, 30, 97, 0.01), inset 0px -1px 0px 1px rgba(47, 104, 219, 0.32), inset 0px 1px 2px -1px rgba(255, 255, 255, 0.32)';
