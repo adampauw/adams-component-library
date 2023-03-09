@@ -4,7 +4,6 @@
   "main": "build/index.js",
   "license": "MIT",
   "devDependencies": {
-    "@ladle/react": "^2.9.0",
     "@types/react": "^18.0.28",
     "@voiceflow/eslint-config": "^7.0.0",
     "@voiceflow/prettier-config": "^1.2.1",
