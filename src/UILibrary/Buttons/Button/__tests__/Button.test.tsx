@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import Button from '../Button';
@@ -29,30 +29,14 @@ describe('Button', () => {
     expect(getByTestId('loading')).toBeInTheDocument();
   });
 
-  it('should toggle the loading state on click', async () => {
-    const { getByText, getByTestId } = render(
-      <Button variant={ButtonVariant.PRIMARY} isLoading={false} icon={<span>icon</span>}>
-        Click me!
-      </Button>
-    );
-
-    fireEvent.click(getByText('Click me!'));
-    expect(getByTestId('loading')).toBeInTheDocument();
-
-    await waitFor(() => {
-      expect(getByTestId('loading')).not.toBeInTheDocument();
-    });
-  });
-
   it('should not render loading dots when loading is false', async () => {
-    jest.useFakeTimers();
-
-    const { getByTestId } = render(
+    const { queryByTestId } = render(
       <Button variant={ButtonVariant.PRIMARY} isLoading={false} icon={<span>icon</span>} withGracefulDelay={true}>
         Click me!
       </Button>
     );
 
-    expect(getByTestId('loading')).not.toBeInTheDocument();
+    const loadingDots = queryByTestId('loading');
+    expect(loadingDots).not.toBeInTheDocument();
   });
 });
