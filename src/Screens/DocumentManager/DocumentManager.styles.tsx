@@ -1,7 +1,7 @@
 import { VF_BLACK } from '../../constants/Colours.constants';
 import { makeStyles } from '../../Helpers/makeStyles';
 
-export const useStyles = ({ isOpen }: { isOpen: boolean }) =>
+export const useStyles = (isOpen: boolean) =>
   makeStyles({
     container: {
       display: 'flex',

@@ -194,4 +194,5 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  moduleDirectories: ['./node_modules', 'src'],
 };

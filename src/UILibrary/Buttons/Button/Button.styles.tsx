@@ -12,33 +12,39 @@ import {
 } from '../../../constants/Colours.constants';
 import { BOX_SHADOW } from '../../../constants/CSS.constants';
 import { FONT_SIZE_SMALL } from '../../../constants/UI.constants';
+import { makeStyles } from '../../../Helpers/makeStyles';
+import { ButtonVariant } from './Button.Enum';
 
-export const buttonVariants = {
-  PRIMARY: {
-    backgroundColor: VF_BLUE,
-    color: VF_WHITE,
-    '&:hover': {
-      backgroundColor: VF_HOVER_BLUE,
+export const useStyles = () =>
+  makeStyles({
+    button: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      padding: '8px 20px 9px',
+      fontSize: FONT_SIZE_SMALL,
+      gap: '8px',
+      boxShadow: BOX_SHADOW,
+      borderRadius: '10px',
+      border: 'none',
+      fontFamily: 'system-ui',
+      fontStyle: 'normal',
+      fontWeight: '600',
+      lineHight: '20px',
     },
-    '&:active': {
-      backgroundColor: VF_ACTIVE_BLUE,
+    primary: {
+      backgroundColor: VF_BLUE,
+      color: VF_WHITE,
+      '&:hover': {
+        backgroundColor: VF_HOVER_BLUE,
+      },
+      '&:active': {
+        backgroundColor: VF_ACTIVE_BLUE,
+      },
     },
-    disabled: {
-      backgroundColor: VF_DISABLED_BLUE,
-      cursor: 'not-allowed',
-    },
-  },
-  SECONDARY: {
-    backgroundColor: VF_GREY,
-    color: VF_BLACK,
-    disabled: {
-      backgroundColor: VF_DISABLED_GREY,
-      cursor: 'not-allowed',
-    },
-  },
-};
+  });
 
-export const StyledButton = styled.button<{ disabled: boolean }>`
+export const StyledButton = styled.button`
   display: flex;
   flex-direction: row;
   align-items: flex-start;

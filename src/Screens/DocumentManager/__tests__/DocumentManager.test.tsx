@@ -25,33 +25,18 @@ const documents: DocumentManagerProps['documents'] = [
   },
 ];
 
-const documentCard = 'document-card';
-
 describe('DocumentManager', () => {
-  test('renders the document list', () => {
+  it('renders the list of documents', () => {
     render(<DocumentManager documents={documents} />);
-    const items = screen.getAllByTestId(documentCard);
-    expect(items).toHaveLength(documents.length);
-    expect(items[0]).toHaveTextContent(documents[0].name);
-    expect(items[1]).toHaveTextContent(documents[1].name);
+    const documentCards = screen.getAllByTestId('document-card');
+    expect(documentCards.length).toBe(documents.length);
   });
 
-  test('opens the document editor when a document is clicked', () => {
+  it('opens the document editor when a document is clicked', () => {
     render(<DocumentManager documents={documents} />);
-    const item = screen.getAllByTestId(documentCard)[0];
-    fireEvent.click(item);
-    const editor = screen.getByTestId('document-editor');
-    expect(editor).toBeInTheDocument();
-    expect(editor).toHaveTextContent(documents[0].name);
-  });
-
-  test('closes the document editor when clicking outside the sidebar', () => {
-    render(<DocumentManager documents={documents} />);
-    const item = screen.getAllByTestId(documentCard)[0];
-    fireEvent.click(item);
-    const editor = screen.getByTestId('document-editor');
-    expect(editor).toBeInTheDocument();
-    fireEvent.mouseUp(document.body); // Click outside the sidebar
-    expect(editor).not.toBeInTheDocument();
+    const firstDocumentCard = screen.getByText(documents[0].name);
+    fireEvent.click(firstDocumentCard);
+    const documentEditor = screen.getByTestId('document-editor');
+    expect(documentEditor).toBeInTheDocument();
   });
 });

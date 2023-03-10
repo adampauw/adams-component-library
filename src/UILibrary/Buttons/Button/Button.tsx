@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { LoadingDots } from '../../Loaders/LoadingDots';
 import { ButtonVariant } from './Button.Enum';
-import { buttonVariants, StyledButton } from './Button.styles';
+import { StyledButton, useStyles } from './Button.styles';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -14,9 +14,9 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const Button = ({ children, variant, isLoading, disabled, withGracefulDelay, icon, onClick }: ButtonProps) => {
+const Button = ({ children, variant = ButtonVariant.PRIMARY, isLoading, disabled, withGracefulDelay, icon, onClick }: ButtonProps) => {
   const [isButtonLoading, setIsButtonLoading] = useState(false);
-  const styles = buttonVariants[variant];
+  const { classes } = useStyles()();
 
   useEffect(() => {
     setIsButtonLoading(isLoading);
@@ -36,9 +36,9 @@ const Button = ({ children, variant, isLoading, disabled, withGracefulDelay, ico
     <StyledButton
       disabled={disabled || isLoading}
       onClick={onClick}
+      className={variant === ButtonVariant.PRIMARY ? classes.primary : classes.secondary}
       style={{
-        ...styles,
-        ...(disabled ? styles.disabled : {}),
+        ...(disabled ? classes.disabled : {}),
       }}
     >
       {isButtonLoading ? (

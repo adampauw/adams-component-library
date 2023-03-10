@@ -1,16 +1,16 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 
-import Button from './Button';
-import { ButtonVariant } from './Button.Enum';
+import Button from '../Button';
+import { ButtonVariant } from '../Button.Enum';
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Buttons',
   component: Button,
   argTypes: {
     variant: {
       control: {
-        type: 'select',
+        type: 'radio',
         options: [ButtonVariant.PRIMARY, ButtonVariant.SECONDARY],
       },
     },
@@ -38,3 +38,11 @@ Primary.args = {
   isLoading: false,
   children: 'Label',
 };
+export const Hover = Template.bind({});
+Hover.args = {
+  variant: ButtonVariant.PRIMARY,
+  isLoading: false,
+  children: 'Label',
+};
+
+Hover.parameters = { pseudo: { hover: true } };

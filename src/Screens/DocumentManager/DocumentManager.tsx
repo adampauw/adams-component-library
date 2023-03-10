@@ -12,7 +12,7 @@ function DocumentManager({ documents }: DocumentManagerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDocument, setActiveDocument] = useState<Document<DataType>>();
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const { classes } = useStyles({ isOpen })();
+  const { classes } = useStyles(isOpen)();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -36,15 +36,15 @@ function DocumentManager({ documents }: DocumentManagerProps) {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="sidebar">
       <div className={classes.itemContainer}>
         {documents.map((document) => (
-          <div key={document.id} className={`${classes.item} ${document === activeDocument ? classes.activeItem : ''}`}>
+          <div key={document.id} className={`${classes.item} ${document === activeDocument ? classes.activeItem : ''}`} data-testid="document-card">
             <DocumentCard doc={document} onClick={() => handleItemClick(document)} />
           </div>
         ))}
       </div>
-      <Collapse in={isOpen} orientation="horizontal" collapsedSize={0} className={classes.collapseList}>
+      <Collapse in={isOpen} orientation="horizontal" collapsedSize={0} className={classes.collapseList} data-testid="document-editor">
         <div className={classes.sidebar} ref={sidebarRef}>
           {activeDocument ? <DocumentEditor doc={activeDocument} onChange={handleDocEditorAction} setActiveDocument={handleDocEditorAction} /> : null}
         </div>
