@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 
+import IconPlay from '../../../../../public/play';
 import Button from '../Button';
 import { ButtonVariant } from '../Button.Enum';
 
@@ -17,32 +18,33 @@ export default {
     isLoading: {
       control: 'boolean',
     },
-    withGracefulDelay: {
-      control: 'boolean',
+    icon: {
+      control: {
+        type: 'radio',
+        options: [<IconPlay />, null],
+      },
     },
-    onClick: {
-      action: 'clicked',
+    disabled: {
+      control: 'boolean',
     },
   },
   args: {
     isLoading: false,
     withGracefulDelay: false,
+    icon: <IconPlay />,
   },
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => (
+  <Button {...args} icon={args.icon ? <IconPlay key="play" /> : undefined} disabled={args.disabled} />
+);
 
 export const Primary = Template.bind({});
 Primary.args = {
   variant: ButtonVariant.PRIMARY,
   isLoading: false,
   children: 'Label',
-};
-export const Hover = Template.bind({});
-Hover.args = {
-  variant: ButtonVariant.PRIMARY,
-  isLoading: false,
-  children: 'Label',
+  icon: <IconPlay />,
 };
 
-Hover.parameters = { pseudo: { hover: true } };
+Primary.parameters = { pseudo: { hover: false } };

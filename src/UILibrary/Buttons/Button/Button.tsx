@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
+import { VF_BLACK, VF_WHITE } from '../../../constants/Colours.constants';
 import { LoadingDots } from '../../Loaders/LoadingDots';
 import { ButtonVariant } from './Button.Enum';
-import { StyledButton, useStyles } from './Button.styles';
+import { useStyles } from './Button.styles';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -10,11 +11,11 @@ interface ButtonProps {
   isLoading: boolean;
   disabled?: boolean;
   withGracefulDelay?: boolean;
-  icon?: React.ReactNode;
+  icon?: JSX.Element;
   onClick?: () => void;
 }
 
-const Button = ({ children, variant = ButtonVariant.PRIMARY, isLoading, disabled, withGracefulDelay, icon, onClick }: ButtonProps) => {
+const Button = ({ children, variant, isLoading, disabled, withGracefulDelay, icon, onClick }: ButtonProps) => {
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const { classes } = useStyles()();
 
@@ -33,23 +34,20 @@ const Button = ({ children, variant = ButtonVariant.PRIMARY, isLoading, disabled
   }, [isLoading, withGracefulDelay]);
 
   return (
-    <StyledButton
+    <button
+      className={`${classes.button} ${classes[variant]} ${disabled ? classes.disabled : ''}`}
       disabled={disabled || isLoading}
       onClick={onClick}
-      className={variant === ButtonVariant.PRIMARY ? classes.primary : classes.secondary}
-      style={{
-        ...(disabled ? classes.disabled : {}),
-      }}
     >
       {isButtonLoading ? (
-        <LoadingDots />
+        <LoadingDots color={variant === 'secondary' ? VF_BLACK : VF_WHITE} />
       ) : (
         <>
           {icon}
           {children}
         </>
       )}
-    </StyledButton>
+    </button>
   );
 };
 export default Button;

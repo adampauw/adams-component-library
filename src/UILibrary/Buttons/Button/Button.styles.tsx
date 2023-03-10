@@ -1,19 +1,18 @@
-import styled from 'styled-components';
-
 import {
   VF_ACTIVE_BLUE,
+  VF_ACTIVE_GREY,
   VF_BLACK,
   VF_BLUE,
   VF_DISABLED_BLUE,
   VF_DISABLED_GREY,
   VF_GREY,
   VF_HOVER_BLUE,
+  VF_HOVER_GREY,
   VF_WHITE,
 } from '../../../constants/Colours.constants';
 import { BOX_SHADOW } from '../../../constants/CSS.constants';
 import { FONT_SIZE_SMALL } from '../../../constants/UI.constants';
 import { makeStyles } from '../../../Helpers/makeStyles';
-import { ButtonVariant } from './Button.Enum';
 
 export const useStyles = () =>
   makeStyles({
@@ -24,7 +23,6 @@ export const useStyles = () =>
       padding: '8px 20px 9px',
       fontSize: FONT_SIZE_SMALL,
       gap: '8px',
-      boxShadow: BOX_SHADOW,
       borderRadius: '10px',
       border: 'none',
       fontFamily: 'system-ui',
@@ -35,27 +33,32 @@ export const useStyles = () =>
     primary: {
       backgroundColor: VF_BLUE,
       color: VF_WHITE,
+      boxShadow: BOX_SHADOW,
       '&:hover': {
         backgroundColor: VF_HOVER_BLUE,
       },
       '&:active': {
         backgroundColor: VF_ACTIVE_BLUE,
       },
+      '&:disabled': {
+        cursor: 'not-allowed',
+        backgroundColor: VF_DISABLED_BLUE,
+        boxShadow: 'none',
+      },
+    },
+    secondary: {
+      backgroundColor: VF_GREY,
+      color: VF_BLACK,
+      boxShadow: 'none',
+      '&:hover': {
+        backgroundColor: VF_HOVER_GREY,
+      },
+      '&:active': {
+        backgroundColor: VF_ACTIVE_GREY,
+      },
+      '&:disabled': {
+        cursor: 'not-allowed',
+        backgroundColor: VF_DISABLED_GREY,
+      },
     },
   });
-
-export const StyledButton = styled.button`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 8px 20px 9px;
-  font-size: ${FONT_SIZE_SMALL};
-  gap: 8px;
-  box-shadow: ${BOX_SHADOW};
-  border-radius: 10px;
-  border: none;
-  font-family: system-ui;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 20px;
-`;
