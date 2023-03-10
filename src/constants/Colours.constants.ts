@@ -6,3 +6,5 @@ export const VF_BLUE = '#1e6bd8';
 export const VF_HOVER_BLUE = '#2F68DB';
 export const VF_ACTIVE_BLUE = '#264EB4';
 export const VF_DISABLED_BLUE = '#87BFFB';
+export const VF_PINK = '#f6c3cc';
+export const VF_PURPLE = '#bfabf0';

@@ -1,3 +1,5 @@
+import './App.css';
+
 import DocumentManager from './Screens/DocumentManager/DocumentManager';
 
 const App = () => {

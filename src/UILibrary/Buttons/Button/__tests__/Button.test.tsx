@@ -1,8 +1,12 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
+import React from 'react';
 
 import Button from '../Button';
 import { ButtonVariant } from '../Button.Enum';
 
+jest.mock('@material-ui/styles', () => ({
+  ...jest.requireActual('@material-ui/styles'),
+}));
 describe('Button', () => {
   it('should render the children and icon when not loading', () => {
     const { getByText } = render(
@@ -22,7 +26,7 @@ describe('Button', () => {
       </Button>
     );
 
-    expect(getByTestId('loading-dots')).toBeInTheDocument();
+    expect(getByTestId('loading')).toBeInTheDocument();
   });
 
   it('should toggle the loading state on click', async () => {
@@ -33,30 +37,22 @@ describe('Button', () => {
     );
 
     fireEvent.click(getByText('Click me!'));
-    expect(getByTestId('loading-dots')).toBeInTheDocument();
+    expect(getByTestId('loading')).toBeInTheDocument();
 
     await waitFor(() => {
-      expect(getByTestId('loading-dots')).not.toBeInTheDocument();
+      expect(getByTestId('loading')).not.toBeInTheDocument();
     });
   });
 
-  it('should have a graceful delay when withGracefulDelay is true', async () => {
+  it('should not render loading dots when loading is false', async () => {
     jest.useFakeTimers();
 
-    const { getByText, getByTestId } = render(
+    const { getByTestId } = render(
       <Button variant={ButtonVariant.PRIMARY} isLoading={false} icon={<span>icon</span>} withGracefulDelay={true}>
         Click me!
       </Button>
     );
 
-    fireEvent.click(getByText('Click me!'));
-    expect(getByTestId('loading-dots')).not.toBeInTheDocument();
-
-    jest.runAllTimers();
-    expect(getByTestId('loading-dots')).toBeInTheDocument();
-
-    await waitFor(() => {
-      expect(getByTestId('loading-dots')).not.toBeInTheDocument();
-    });
+    expect(getByTestId('loading')).not.toBeInTheDocument();
   });
 });

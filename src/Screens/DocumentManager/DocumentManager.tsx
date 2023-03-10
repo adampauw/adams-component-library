@@ -1,49 +1,43 @@
-import { makeStyles } from '@material-ui/styles';
 import { Collapse } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
 
 import { DataType, Document, DocumentCard, DocumentEditor, DOCUMENTS } from '../../__stdlib';
+import { VF_BLACK } from '../../constants/Colours.constants';
+import { makeStyles } from '../../Helpers/makeStyles';
 
-interface DocumentManagerProps {
-  isOpen: boolean;
-}
-
-const Container = styled.div`
-  display: grid;
-  grid-template-rows: 60px 1fr;
-  background-color: #bfabf0;
-`;
-
-const Item = styled.div`
-  width: calc(25% - 16px);
-  height: 100px;
-  margin-bottom: 16px;
-`;
-
-const SideBar = styled.div<DocumentManagerProps>`
-  position: fixed;
-  top: 0;
-  right: ${({ isOpen }) => (isOpen ? '0' : '-300px')};
-  width: 300px;
-  height: 100%;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition: right 0.3s ease-in-out;
-  z-index: 1;
-`;
-
-const useStyles = makeStyles({
-  collapseList: {
-    minWidth: 'unset!important',
-  },
-});
+const useStyles = ({ isOpen }: { isOpen: boolean }) =>
+  makeStyles({
+    container: {
+      display: 'flex',
+      backgroundColor: '#bfabf0',
+      justifyContent: 'space-between',
+    },
+    itemContainer: {
+      display: 'grid',
+      gridTemplateColumns: isOpen ? 'repeat(3, minmax(250px, 1fr))' : 'repeat(4, minmax(calc(100vw/4), 1fr))',
+    },
+    item: {
+      margin: 20,
+      width: 250,
+    },
+    activeItem: {
+      outline: `2px solid ${VF_BLACK}`,
+    },
+    sidebar: {
+      width: 300,
+      height: '100%',
+      backgroundColor: '#f6c3cc',
+    },
+    collapseList: {
+      minWidth: 'unset!important',
+    },
+  });
 
 function DocumentManager() {
-  const classes = useStyles();
   const [isOpen, setIsOpen] = useState(false);
   const [activeDocument, setActiveDocument] = useState<Document<DataType>>();
   const sidebarRef = useRef<HTMLDivElement>(null);
+  const { classes } = useStyles({ isOpen })();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -62,23 +56,25 @@ function DocumentManager() {
     setActiveDocument(document);
   };
 
-  const handleCloseClick = () => {
-    setIsOpen(false);
+  const handleDocEditorAction = (): void => {
+    // TODO: Add logic here when you know what it should do (not in docs)
   };
 
   return (
-    <Container>
+    <div className={classes.container}>
+      <div className={classes.itemContainer}>
+        {DOCUMENTS.map((document) => (
+          <div key={document.id} className={`${classes.item} ${document === activeDocument ? classes.activeItem : ''}`}>
+            <DocumentCard doc={document} onClick={() => handleItemClick(document)} />
+          </div>
+        ))}
+      </div>
       <Collapse in={isOpen} orientation="horizontal" collapsedSize={0} className={classes.collapseList}>
-        <SideBar isOpen={isOpen} ref={sidebarRef}>
-          {activeDocument ? <DocumentEditor doc={activeDocument} onChange={handleCloseClick} setActiveDocument={handleCloseClick} /> : null}
-        </SideBar>
+        <div className={classes.sidebar} ref={sidebarRef}>
+          {activeDocument ? <DocumentEditor doc={activeDocument} onChange={handleDocEditorAction} setActiveDocument={handleDocEditorAction} /> : null}
+        </div>
       </Collapse>
-      {DOCUMENTS.map((document) => (
-        <Item key={document.id}>
-          <DocumentCard doc={document} onClick={() => handleItemClick(document)} />
-        </Item>
-      ))}
-    </Container>
+    </div>
   );
 }
 

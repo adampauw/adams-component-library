@@ -13,7 +13,7 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const MUIButton = ({ children, variant, isLoading, withGracefulDelay, icon, onClick }: ButtonProps) => {
+const Button = ({ children, variant, isLoading, withGracefulDelay, icon, onClick }: ButtonProps) => {
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const styles = buttonVariants[variant];
 
@@ -50,4 +50,4 @@ const MUIButton = ({ children, variant, isLoading, withGracefulDelay, icon, onCl
     </StyledButton>
   );
 };
-export default MUIButton;
+export default Button;
