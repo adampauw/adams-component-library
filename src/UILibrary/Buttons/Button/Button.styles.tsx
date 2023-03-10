@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 
-import { VF_ACTIVE_BLUE, VF_BLACK, VF_BLUE, VF_DISABLED_BLUE, VF_GREY, VF_HOVER_BLUE, VF_WHITE } from '../../../constants/Colours.constants';
+import {
+  VF_ACTIVE_BLUE,
+  VF_BLACK,
+  VF_BLUE,
+  VF_DISABLED_BLUE,
+  VF_DISABLED_GREY,
+  VF_GREY,
+  VF_HOVER_BLUE,
+  VF_WHITE,
+} from '../../../constants/Colours.constants';
 import { BOX_SHADOW } from '../../../constants/CSS.constants';
 import { FONT_SIZE_SMALL } from '../../../constants/UI.constants';
 
@@ -14,17 +23,22 @@ export const buttonVariants = {
     '&:active': {
       backgroundColor: VF_ACTIVE_BLUE,
     },
-    '&:disabled': {
+    disabled: {
       backgroundColor: VF_DISABLED_BLUE,
+      cursor: 'not-allowed',
     },
   },
   SECONDARY: {
     backgroundColor: VF_GREY,
     color: VF_BLACK,
+    disabled: {
+      backgroundColor: VF_DISABLED_GREY,
+      cursor: 'not-allowed',
+    },
   },
 };
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<{ disabled: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: flex-start;

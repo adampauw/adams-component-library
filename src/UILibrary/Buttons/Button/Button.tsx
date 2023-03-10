@@ -8,12 +8,13 @@ interface ButtonProps {
   children: React.ReactNode;
   variant: ButtonVariant;
   isLoading: boolean;
+  disabled?: boolean;
   withGracefulDelay?: boolean;
   icon?: React.ReactNode;
   onClick?: () => void;
 }
 
-const Button = ({ children, variant, isLoading, withGracefulDelay, icon, onClick }: ButtonProps) => {
+const Button = ({ children, variant, isLoading, disabled, withGracefulDelay, icon, onClick }: ButtonProps) => {
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const styles = buttonVariants[variant];
 
@@ -33,10 +34,11 @@ const Button = ({ children, variant, isLoading, withGracefulDelay, icon, onClick
 
   return (
     <StyledButton
-      disabled={isLoading}
+      disabled={disabled || isLoading}
       onClick={onClick}
       style={{
         ...styles,
+        ...(disabled ? styles.disabled : {}),
       }}
     >
       {isButtonLoading ? (

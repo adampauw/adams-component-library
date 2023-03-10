@@ -1,10 +1,14 @@
 import { Collapse } from '@mui/material';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { DataType, Document, DocumentCard, DocumentEditor, DOCUMENTS } from '../../__stdlib';
+import { DataType, Document, DocumentCard, DocumentEditor } from '../../__stdlib';
 import { useStyles } from './DocumentManager.styles';
 
-function DocumentManager() {
+export interface DocumentManagerProps {
+  documents: Document<DataType>[];
+}
+
+function DocumentManager({ documents }: DocumentManagerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDocument, setActiveDocument] = useState<Document<DataType>>();
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -34,7 +38,7 @@ function DocumentManager() {
   return (
     <div className={classes.container}>
       <div className={classes.itemContainer}>
-        {DOCUMENTS.map((document) => (
+        {documents.map((document) => (
           <div key={document.id} className={`${classes.item} ${document === activeDocument ? classes.activeItem : ''}`}>
             <DocumentCard doc={document} onClick={() => handleItemClick(document)} />
           </div>
