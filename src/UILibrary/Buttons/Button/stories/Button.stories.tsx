@@ -21,7 +21,7 @@ export default {
     icon: {
       control: {
         type: 'radio',
-        options: [<IconPlay />, null],
+        options: [undefined, <IconPlay />],
       },
     },
     disabled: {
@@ -31,7 +31,8 @@ export default {
   args: {
     isLoading: false,
     withGracefulDelay: false,
-    icon: <IconPlay />,
+    disabled: false,
+    icon: undefined,
   },
 } as ComponentMeta<typeof Button>;
 

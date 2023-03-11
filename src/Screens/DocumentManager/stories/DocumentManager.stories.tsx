@@ -1,14 +1,17 @@
 import { Collapse } from '@mui/material';
+import { Meta, Story } from '@storybook/react';
 import React, { useEffect, useRef, useState } from 'react';
 
-import { DataType, Document, DocumentCard, DocumentEditor } from '../../__stdlib';
-import { useStyles } from './DocumentManager.styles';
+import { DataType, Document, DocumentCard, DocumentEditor, DOCUMENTS } from '../../../__stdlib';
+import DocumentManager, { DocumentManagerProps } from '../DocumentManager';
+import { useStyles } from '../DocumentManager.styles';
 
-export interface DocumentManagerProps {
-  documents: Document<DataType>[];
-}
+export default {
+  title: 'Components/DocumentManager',
+  component: DocumentManager,
+} as Meta;
 
-function DocumentManager({ documents }: DocumentManagerProps) {
+const Template: Story<DocumentManagerProps> = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDocument, setActiveDocument] = useState<Document<DataType>>();
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -18,7 +21,6 @@ function DocumentManager({ documents }: DocumentManagerProps) {
     const handleClickOutside = (event: MouseEvent) => {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
         setIsOpen(false);
-        setActiveDocument(undefined);
       }
     };
     document.addEventListener('mouseup', handleClickOutside);
@@ -39,7 +41,7 @@ function DocumentManager({ documents }: DocumentManagerProps) {
   return (
     <div className={classes.container}>
       <div className={classes.itemContainer}>
-        {documents.map((document) => (
+        {args.documents.map((document) => (
           <div key={document.id} className={`${classes.item} ${document === activeDocument ? classes.activeItem : ''}`} data-testid="document-card">
             <DocumentCard doc={document} onClick={() => handleItemClick(document)} />
           </div>
@@ -52,6 +54,9 @@ function DocumentManager({ documents }: DocumentManagerProps) {
       </Collapse>
     </div>
   );
-}
+};
 
-export default DocumentManager;
+export const Default = Template.bind({});
+Default.args = {
+  documents: DOCUMENTS,
+};

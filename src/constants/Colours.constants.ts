@@ -10,3 +10,4 @@ export const VF_ACTIVE_BLUE = '#264EB4';
 export const VF_DISABLED_BLUE = '#87BFFB';
 export const VF_PINK = '#f6c3cc';
 export const VF_PURPLE = '#bfabf0';
+export const VF_GREEN = '#68C07C';

@@ -15,7 +15,7 @@ export const useStyles = (imagePath: string) =>
     round: {
       width: '80px',
       height: '80px',
-      borderRadius: '25px',
+      borderRadius: '40px',
     },
     hero: {
       width: '100%',

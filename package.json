@@ -40,7 +40,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "rimraf build && tsc -p tsconfig.json",
-    "storybook": "start-storybook -p 6006",
+    "dev": "start-storybook -p 6006",
     "test": "jest",
     "build-storybook": "build-storybook"
   },
