@@ -1,3 +1,7 @@
 /build
 /docs
 /node_modules
+
+# testing
+/coverage
+/report.json

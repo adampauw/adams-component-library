@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678560678420" clover="3.2.0">
-  <project timestamp="1678560678420" name="All files">
-    <metrics statements="133" coveredstatements="91" conditionals="62" coveredconditionals="24" methods="47" coveredmethods="25" elements="242" coveredelements="140" complexity="0" loc="133" ncloc="133" packages="7" files="18" classes="18"/>
+<coverage generated="1678568578791" clover="3.2.0">
+  <project timestamp="1678568578791" name="All files">
+    <metrics statements="135" coveredstatements="93" conditionals="62" coveredconditionals="24" methods="47" coveredmethods="25" elements="244" coveredelements="142" complexity="0" loc="135" ncloc="135" packages="7" files="18" classes="18"/>
     <package name="Helpers">
       <metrics statements="21" coveredstatements="7" conditionals="14" coveredconditionals="2" methods="6" coveredmethods="2"/>
       <file name="makeStyles.tsx" path="/Users/adam/Documents/webdev/websites/voiceFlow/adams-component-library/src/Helpers/makeStyles.tsx">
@@ -60,7 +60,7 @@
       </file>
     </package>
     <package name="UILibrary.Buttons.Button">
-      <metrics statements="13" coveredstatements="11" conditionals="14" coveredconditionals="11" methods="5" coveredmethods="4"/>
+      <metrics statements="15" coveredstatements="13" conditionals="14" coveredconditionals="11" methods="5" coveredmethods="4"/>
       <file name="Button.Enum.ts" path="/Users/adam/Documents/webdev/websites/voiceFlow/adams-component-library/src/UILibrary/Buttons/Button/Button.Enum.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
@@ -70,18 +70,20 @@
         <line num="18" count="4" type="stmt"/>
       </file>
       <file name="Button.tsx" path="/Users/adam/Documents/webdev/websites/voiceFlow/adams-component-library/src/UILibrary/Buttons/Button/Button.tsx">
-        <metrics statements="11" coveredstatements="9" conditionals="14" coveredconditionals="11" methods="4" coveredmethods="3"/>
+        <metrics statements="13" coveredstatements="11" conditionals="14" coveredconditionals="11" methods="4" coveredmethods="3"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="4" type="stmt"/>
         <line num="20" count="4" type="stmt"/>
-        <line num="22" count="4" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="26" count="4" type="stmt"/>
-        <line num="27" count="3" type="cond" truecount="3" falsecount="1"/>
-        <line num="28" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="36" count="4" type="stmt"/>
+        <line num="21" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="3" type="cond" truecount="3" falsecount="1"/>
+        <line num="30" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
       </file>
     </package>
     <package name="UILibrary.Image">
