@@ -39,7 +39,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -118,31 +118,16 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,6 +144,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -173,61 +159,102 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styled from 'styled-components';
-&nbsp;
-import {
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
   VF_ACTIVE_BLUE,
+  VF_ACTIVE_GREY,
   VF_BLACK,
   VF_BLUE,
   VF_DISABLED_BLUE,
   VF_DISABLED_GREY,
   VF_GREY,
   VF_HOVER_BLUE,
+  VF_HOVER_GREY,
   VF_WHITE,
 } from '../../../constants/Colours.constants';
 import { BOX_SHADOW } from '../../../constants/CSS.constants';
 import { FONT_SIZE_SMALL } from '../../../constants/UI.constants';
+import { makeStyles } from '../../../Helpers/makeStyles';
 &nbsp;
-export const buttonVariants = {
-  PRIMARY: {
-    backgroundColor: VF_BLUE,
-    color: VF_WHITE,
-    '&amp;:hover': {
-      backgroundColor: VF_HOVER_BLUE,
+export const useStyles = () =&gt;
+  makeStyles({
+    button: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      padding: '8px 20px 9px',
+      fontSize: FONT_SIZE_SMALL,
+      gap: '2px',
+      borderRadius: '10px',
+      border: 'none',
+      fontFamily: 'system-ui',
+      fontStyle: 'normal',
+      fontWeight: '600',
+      lineHeight: '20px',
     },
-    '&amp;:active': {
-      backgroundColor: VF_ACTIVE_BLUE,
+    primary: {
+      backgroundColor: VF_BLUE,
+      color: VF_WHITE,
+      boxShadow: BOX_SHADOW,
+      '&amp;:hover': {
+        backgroundColor: VF_HOVER_BLUE,
+      },
+      '&amp;:active': {
+        backgroundColor: VF_ACTIVE_BLUE,
+      },
+      '&amp;:disabled': {
+        cursor: 'not-allowed',
+        backgroundColor: VF_DISABLED_BLUE,
+        boxShadow: 'none',
+      },
     },
-    disabled: {
-      backgroundColor: VF_DISABLED_BLUE,
-      cursor: 'not-allowed',
+    secondary: {
+      backgroundColor: VF_GREY,
+      color: VF_BLACK,
+      boxShadow: 'none',
+      '&amp;:hover': {
+        backgroundColor: VF_HOVER_GREY,
+      },
+      '&amp;:active': {
+        backgroundColor: VF_ACTIVE_GREY,
+      },
+      '&amp;:disabled': {
+        cursor: 'not-allowed',
+        backgroundColor: VF_DISABLED_GREY,
+      },
     },
-  },
-  SECONDARY: {
-    backgroundColor: VF_GREY,
-    color: VF_BLACK,
-    disabled: {
-      backgroundColor: VF_DISABLED_GREY,
-      cursor: 'not-allowed',
-    },
-  },
-};
-&nbsp;
-export const StyledButton = styled.button&lt;{ disabled: boolean }&gt;`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 8px 20px 9px;
-  font-size: ${FONT_SIZE_SMALL};
-  gap: 8px;
-  box-shadow: ${BOX_SHADOW};
-  border-radius: 10px;
-  border: none;
-  font-family: system-ui;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 20px;
-`;
+  });
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -235,7 +262,7 @@ export const StyledButton = styled.button&lt;{ disabled: boolean }&gt;`
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-10T04:36:41.825Z
+                at 2023-03-11T18:51:18.355Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

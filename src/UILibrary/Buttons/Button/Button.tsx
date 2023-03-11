@@ -18,6 +18,8 @@ interface ButtonProps {
 const Button = ({ children, variant, isLoading, disabled, withGracefulDelay, icon, onClick }: ButtonProps) => {
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const { classes } = useStyles()();
+  const LoadingColor = variant === 'secondary' ? VF_BLACK : VF_WHITE;
+  const styles = `${classes.button} ${classes[variant]} ${disabled ? classes.disabled : ''}`;
 
   useEffect(() => {
     setIsButtonLoading(isLoading);
@@ -34,13 +36,9 @@ const Button = ({ children, variant, isLoading, disabled, withGracefulDelay, ico
   }, [isLoading, withGracefulDelay]);
 
   return (
-    <button
-      className={`${classes.button} ${classes[variant]} ${disabled ? classes.disabled : ''}`}
-      disabled={disabled || isLoading}
-      onClick={onClick}
-    >
+    <button className={styles} disabled={disabled || isLoading} onClick={onClick}>
       {isButtonLoading ? (
-        <LoadingDots color={variant === 'secondary' ? VF_BLACK : VF_WHITE} />
+        <LoadingDots color={LoadingColor} />
       ) : (
         <>
           {icon}

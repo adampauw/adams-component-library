@@ -40,7 +40,7 @@ function DocumentManager({ documents }: DocumentManagerProps) {
     <div className={classes.container}>
       <div className={classes.itemContainer}>
         {documents.map((document) => (
-          <div key={document.id} className={`${classes.item} ${document === activeDocument ? classes.activeItem : ''}`} data-testid="document-card">
+          <div key={document.id} className={`${classes.item} ${document === activeDocument && classes.activeItem}`} data-testid="document-card">
             <DocumentCard doc={document} onClick={() => handleItemClick(document)} />
           </div>
         ))}
