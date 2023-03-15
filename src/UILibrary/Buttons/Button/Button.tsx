@@ -11,11 +11,11 @@ interface ButtonProps {
   isLoading: boolean;
   disabled?: boolean;
   withGracefulDelay?: boolean;
-  icon?: JSX.Element;
+  // icon?: JSX.Element;
   onClick?: () => void;
 }
 
-const Button = ({ children, variant, isLoading, disabled, withGracefulDelay, icon, onClick }: ButtonProps) => {
+const Button = ({ children, variant, isLoading, disabled, withGracefulDelay, onClick }: ButtonProps) => {
   const [isButtonLoading, setIsButtonLoading] = useState(false);
   const { classes } = useStyles()();
   const LoadingColor = variant === 'secondary' ? VF_BLACK : VF_WHITE;
@@ -41,7 +41,7 @@ const Button = ({ children, variant, isLoading, disabled, withGracefulDelay, ico
         <LoadingDots color={LoadingColor} />
       ) : (
         <>
-          {icon}
+          {/* {icon} */}
           {children}
         </>
       )}

@@ -10,7 +10,7 @@ import {
   VF_HOVER_GREY,
   VF_WHITE,
 } from '../../../constants/Colours.constants';
-import { BOX_SHADOW } from '../../../constants/CSS.constants';
+import { BOX_SHADOW, BOX_SHADOW_ACTIVE, BOX_SHADOW_DISABLED, BOX_SHADOW_HOVER } from '../../../constants/CSS.constants';
 import { FONT_SIZE_SMALL } from '../../../constants/UI.constants';
 import { makeStyles } from '../../../Helpers/makeStyles';
 
@@ -22,13 +22,17 @@ export const useStyles = () =>
       alignItems: 'center',
       padding: '8px 20px 9px',
       fontSize: FONT_SIZE_SMALL,
-      gap: '2px',
+      gap: '8px',
       borderRadius: '10px',
+      height: '40px',
       border: 'none',
       fontFamily: 'system-ui',
       fontStyle: 'normal',
       fontWeight: '600',
       lineHeight: '20px',
+      flex: 'none',
+      order: '0',
+      flexGrow: '0',
     },
     primary: {
       backgroundColor: VF_BLUE,
@@ -36,14 +40,16 @@ export const useStyles = () =>
       boxShadow: BOX_SHADOW,
       '&:hover': {
         backgroundColor: VF_HOVER_BLUE,
+        boxShadow: BOX_SHADOW_HOVER,
       },
       '&:active': {
         backgroundColor: VF_ACTIVE_BLUE,
+        boxShadow: BOX_SHADOW_ACTIVE,
       },
       '&:disabled': {
         cursor: 'not-allowed',
         backgroundColor: VF_DISABLED_BLUE,
-        boxShadow: 'none',
+        boxShadow: BOX_SHADOW_DISABLED,
       },
     },
     secondary: {
